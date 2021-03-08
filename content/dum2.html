@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript</title>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function(){
+//get the input element
+
+            var button = document.querySelector("#Convert_Button")
+            //output the input's value to the console
+
+//get the span element
+            button.addEventListener("click",function(){
+                var input = document.querySelector("#input_value")
+                console.log(input.value)
+                var output = document.querySelector("#converted_value")
+                output.value = (input.value -32)*(5/9);
+
+//converting code goes here
+            });
+
+//output the span's text to the console
+
+
+        });
+    </script>
+
+</head>
+<body>
+<label for="input_value">Temperature to Convert</label>
+<input id="input_value" value="52">
+<select name="Temperature">
+    <option value="Fahrenheit">Fahrenheit</option>
+    <option value="Celsius">Celsius</option>
+</select><br>
+<button type="button" id="Convert_Button">Convert</button>                    <br>
+<label for="converted_value">Converted Temperature</label>
+<input id="converted_value">
+
+
+</body>
+</html>

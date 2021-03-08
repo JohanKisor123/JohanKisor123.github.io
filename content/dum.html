@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<link href="madison style.css" rel='stylesheet'/>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Madison Park Technical Vocational High School</title>
+</head>
+
+
+
+
+<body>
+
+
+<header>
+
+
+
+    <h1 style="text-align:center;">Madison Park</h1>
+    <hr>
+
+
+
+
+
+</header>
+<ul>
+    <li><a class="active" href="#home">Home</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">About</a></li>
+</ul>
+
+<section>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div>
+        <img class="mySlides" src="https://dummyimage.com/600x400/2ca13a/0011ff.jpg&text=WATERMELON" width="800px" height="300">
+
+        <img class="mySlides" src="https://dummyimage.com/600x400/a32ca3/0011ff.jpg&text=FRIED+CHICKEN" width="800px" height="300px"
+
+    </div>
+    <script>
+        var slideIndex = 0;
+        carousel();
+
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > x.length) {slideIndex = 1}
+            x[slideIndex-1].style.display = "block";
+            setTimeout(carousel, 4000);
+        }
+    </script>
+
+
+
+
+</section>
+
+
+<article>
+    <p> Welcome to Madison park’s website. On this website you can view our different programs we have available in our school.Our mission of the Madison Park Technical Vocational High School is to provide our students with rigorous academic and technical educational programs and the character necessary to further pursue and succeed in postsecondary and career opportunities in order to become productive citizens.</p>
+
+
+</article>
+
+
+</body>
