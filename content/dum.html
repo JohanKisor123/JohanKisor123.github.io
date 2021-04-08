@@ -1,75 +1,119 @@
 <!DOCTYPE html>
-<link href="madison style.css" rel='stylesheet'/>
-
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>Madison Park Technical Vocational High School</title>
-</head>
+    <title>Title</title>
+    <style>
+body{
+background-color: ghostwhite;
+}
 
 
-
-
-<body>
-
-
-<header>
-
-
-
-    <h1 style="text-align:center;">Madison Park</h1>
-    <hr>
-
-
-
-
-
-</header>
-<ul>
-    <li><a class="active" href="#home">Home</a></li>
-    <li><a href="#news">News</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#about">About</a></li>
-</ul>
-
-<section>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <div>
-        <img class="mySlides" src="https://dummyimage.com/600x400/2ca13a/0011ff.jpg&text=WATERMELON" width="800px" height="300">
-
-        <img class="mySlides" src="https://dummyimage.com/600x400/a32ca3/0011ff.jpg&text=FRIED+CHICKEN" width="800px" height="300px"
-
-    </div>
+    </style>
     <script>
-        var slideIndex = 0;
-        carousel();
+        document.addEventListener("DOMContentLoaded", function() {
+            var newRow = `
+              <tr>
+                    <td><input type="date" class="num1"></td>
+                    <td><input type="number" min="501" class="num3"> </td>
+                    <td><input type="text" class="num2"></td>
+                    <td><input type="list"list="budgetItems" class="budget_type"></td>
+                    <td><span class="dollar_sign">$</span><input type="number" class="num4"><button>save</button></td>
+                </tr>
+            `;
+            var checkbookBody = document.querySelector("#num1");
+            var ledger = [];
 
-        function carousel() {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            slideIndex++;
-            if (slideIndex > x.length) {slideIndex = 1}
-            x[slideIndex-1].style.display = "block";
-            setTimeout(carousel, 4000);
-        }
+            checkbookBody.addEventListener("click", function (event) {
+//use event.target here
+
+                if (event.target.matches('button')) {
+                    var tableRow = event.target.parentNode.parentNode;
+                    var date = tableRow.querySelector("input.num1").value;
+                    console.log(date);
+                    checkbookBody.insertAdjacentHTML('beforeend', newRow);
+                    var checkNumber = tableRow.querySelector("input.num3").value;
+                    console.log(checkNumber);
+                    var item = tableRow.querySelector("input.budget_type").value;
+                    console.log(item);
+                    var budgetType = tableRow.querySelector("input.num2").value;
+                    console.log(budgetType);
+                    var cost = tableRow.querySelector("input.num4").value;
+                    console.log(cost);
+                    var ledgerLine = [];
+                    ledgerLine.push(date);
+                    ledgerLine.push(checkNumber);
+                    ledgerLine.push(item);
+                    ledgerLine.push(budgetType);
+                    ledgerLine.push(cost);
+                    console.log(ledger)
+                    console.log(ledgerLine[0])
+                    console.log(ledgerLine[1])
+                    console.log(ledger[0])
+                    console.log(ledger)
+                    var subtotal = 0.0;
+                    ledger.forEach(function (ledgerLine) {
+//subtotal += ledgerLine[put index of cost here];
+                        var subtotalText = document.querySelector("input#subtotal")
+                        subtotalText.value = subtotal.toFixed(2);
+
+//
+//
+//
+// adding up code goes here
+                    });
+
+
+                }
+            });
+        });
+
+
     </script>
+</head>
+<body>
+<datalist id="budgetItems">
+    <option value="Housing">
+    <option value="Food">
+    <option value="Clothing">
+    <option value="Utilities">
+    <option value="Transportation">
+    <option value="Entertainment">
+    <option value="Miscellaneous">
+</datalist>
+<h1>Checkook and Budget Calculator</h1>
+<table border="1px">
+    <thead >
+    <tr>
+        <th>Date</th>
+        <th>Check#</th>
+        <th>Item</th>
+        <th>Budget Type</th>
+        <th>cost</th>
+    </tr>
+    </thead>
+    <tbody id="num1">
+    <tr>
+        <td><input type="date" class="num1"></td>
+        <td><input type="number" min="501" class="num3"> </td>
+        <td><input type="text" class="num2"></td>
+        <td><input type="list"list="budgetItems" class="budget_type"></td>
+        <td><span>$</span><input type="number" class="num4"><button>save</button></td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="4">3</td>
+        <td>Subtotal$<input type="number"></td>
 
 
 
+    </tr>
+    <tr>
+    </tfoot>
+</table>
 
-</section>
-
-
-<article>
-    <p> Welcome to Madison park’s website. On this website you can view our different programs we have available in our school.Our mission of the Madison Park Technical Vocational High School is to provide our students with rigorous academic and technical educational programs and the character necessary to further pursue and succeed in postsecondary and career opportunities in order to become productive citizens.</p>
-
-
-</article>
 
 
 </body>
+</html>
