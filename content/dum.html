@@ -14,47 +14,48 @@ background-color: ghostwhite;
         document.addEventListener("DOMContentLoaded", function() {
             var newRow = `
               <tr>
-                    <td><input type="date" class="num1"></td>
-                    <td><input type="number" min="501" class="num3"> </td>
-                    <td><input type="text" class="num2"></td>
+                    <td><input type="date" class="date"></td>
+                    <td><input type="number" min="501" class="checknum"> </td>
+                    <td><input type="text" class="item"></td>
                     <td><input type="list"list="budgetItems" class="budget_type"></td>
-                    <td><span class="dollar_sign">$</span><input type="number" class="num4"><button>save</button></td>
+                    <td><span class="dollar_sign">$</span><input type="number" class="cost"><button>save</button></td>
                 </tr>
             `;
-            var checkbookBody = document.querySelector("#num1");
+            var checkbookBody = document.querySelector("#tablebody");
             var ledger = [];
 
             checkbookBody.addEventListener("click", function (event) {
 //use event.target here
-
+                var tableRow = event.target.parentNode.parentNode;
                 if (event.target.matches('button')) {
-                    var tableRow = event.target.parentNode.parentNode;
-                    var date = tableRow.querySelector("input.num1").value;
-                    console.log(date);
                     checkbookBody.insertAdjacentHTML('beforeend', newRow);
-                    var checkNumber = tableRow.querySelector("input.num3").value;
-                    console.log(checkNumber);
-                    var item = tableRow.querySelector("input.budget_type").value;
-                    console.log(item);
-                    var budgetType = tableRow.querySelector("input.num2").value;
-                    console.log(budgetType);
-                    var cost = tableRow.querySelector("input.num4").value;
-                    console.log(cost);
+
+                    var date = tableRow.querySelector("input.date").value;
+
+
+                    var checkNumber = tableRow.querySelector("input.checknum").value;
+
+                    var item = tableRow.querySelector("input.item").value;
+
+                    var budgetType = tableRow.querySelector("input.budget_type").value;
+
+                    var cost = tableRow.querySelector("input.cost").value;
+
                     var ledgerLine = [];
                     ledgerLine.push(date);
                     ledgerLine.push(checkNumber);
                     ledgerLine.push(item);
                     ledgerLine.push(budgetType);
                     ledgerLine.push(cost);
-                    console.log(ledger)
-                    console.log(ledgerLine[0])
-                    console.log(ledgerLine[1])
-                    console.log(ledger[0])
-                    console.log(ledger)
+                    console.log(ledgerLine);
+                    console.log(ledger);
+                    ledger.push(ledgerLine);
                     var subtotal = 0.0;
-                  ledger.push(ledgerLine)
+
                     ledger.forEach(function (ledgerLine) {
-//subtotal += ledgerLine[put index of cost here];
+                        subtotal += parseFloat(ledgerLine[4]);
+
+
                         var subtotalText = document.querySelector("input#subtotal")
                         subtotalText.value = subtotal.toFixed(2);
 
@@ -93,24 +94,23 @@ background-color: ghostwhite;
         <th>cost</th>
     </tr>
     </thead>
-    <tbody id="num1">
+    <tbody id="tablebody">
     <tr>
-        <td><input type="date" class="num1"></td>
-        <td><input type="number" min="501" class="num3"> </td>
-        <td><input type="text" class="num2"></td>
+        <td><input type="date" class="date"></td>
+        <td><input type="number" min="501" class="checknum"> </td>
+        <td><input type="text" class="item"></td>
         <td><input type="list"list="budgetItems" class="budget_type"></td>
-        <td><span>$</span><input type="number" class="num4"><button>save</button></td>
+        <td><span>$</span><input type="number" class="cost"><button>save</button></td>
     </tr>
     </tbody>
     <tfoot>
     <tr>
-        <td colspan="4">3</td>
-        <td>Subtotal$<input type="number"></td>
+        <td colspan="4"></td>
+        <td>Subtotal$<input type="number" id="subtotal"></td>
 
 
 
     </tr>
-    <tr>
     </tfoot>
 </table>
 
